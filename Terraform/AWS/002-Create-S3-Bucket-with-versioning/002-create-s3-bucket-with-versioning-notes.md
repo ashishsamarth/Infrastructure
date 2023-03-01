@@ -64,7 +64,7 @@ AWS Default region
 
 ----------------------------------------------------------------------------------------------------------------------------------------
 
-Once the terraform configuration file "001-connect-to-aws.tf" is created successfully.
+Once the terraform configuration file "002-create-s3-bucket-with-versioning" is created successfully.
 
     To Run terraform configuration for the first time for this configuration file
         1.  Navigate to the current directory (using terminal) where this configuration file is present
