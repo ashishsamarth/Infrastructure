@@ -735,3 +735,12 @@ Content of "terraform.tfstate"
 	}
 
 ----------------------------------------------------------------------------------------------------------------------------------------
+Check if the S3 Bucket was created
+----------------------------------------------------------------------------------------------------------------------------------------
+	PS C:\Users\samarth\_code_repo\Infrastructure\Terraform\AWS\001-Connect-To-AWS-Create-S3-Bucket> aws s3 ls
+	2023-02-12 18:59:47 samarth-ashish-aws-developer-021223
+	2023-02-16 05:29:57 samarth-ashish-aws-developer-021623     
+	2023-03-01 15:49:21 samarth-terraform-bucket
+	PS C:\Users\samarth\_code_repo\Infrastructure\Terraform\AWS\001-Connect-To-AWS-Create-S3-Bucket> 
+
+----------------------------------------------------------------------------------------------------------------------------------------
