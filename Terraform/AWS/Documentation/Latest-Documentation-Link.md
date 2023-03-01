@@ -1,1 +1,1 @@
-![Terraform-AWS-Latest-Documentation][https://registry.terraform.io/providers/hashicorp/aws/latest/docs]
+![https://registry.terraform.io/providers/hashicorp/aws/latest/docs]
