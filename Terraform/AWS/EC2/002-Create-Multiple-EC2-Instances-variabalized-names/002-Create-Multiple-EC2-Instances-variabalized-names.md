@@ -1,0 +1,475 @@
+Terraform - AWS
+----------------------------------------------------------------------------------------------------------------------------------------
+
+For connecting to any provider (in this case AWS), we will need atleast three values
+
+    1.  AWS access key
+    2.  AWS Secret key
+    3.  AWS region
+
+----------------------------------------------------------------------------------------------------------------------------------------
+AWS Access Key & AWS Secret Key
+
+    Can be set by following methods
+
+        1.  By running aws configure, and the access key gets written to users '.aws'/credentials file
+        2.  By explicitly defining the environment variables
+
+----------------------------------------------------------------------------------------------------------------------------------------
+
+    For Linux
+
+    export AWS_ACCESS_KEY_ID="Your_AWS_Access_key"
+    export AWS_SECRET_ACCESS_KEY="Your_AWS_Secret_key"
+
+----------------------------------------------------------------------------------------------------------------------------------------
+
+    For Windows CMD
+
+    setx AWS_ACCESS_KEY_ID Your_AWS_Access_key
+    setx AWS_SECRET_ACCESS_KEY Your_AWS_Secret_key
+
+----------------------------------------------------------------------------------------------------------------------------------------
+
+    For PowerShell
+
+    $Env:AWS_ACCESS_KEY_ID="Your_AWS_Access_key"
+    $Env:AWS_SECRET_ACCESS_KEY="Your_AWS_Secret_key"
+
+----------------------------------------------------------------------------------------------------------------------------------------
+AWS Default region
+
+    Can be set by following methods
+
+        1.  By running aws configure, and the access key gets written to users '.aws'/config file
+        2.  By explicitly defining the environment variables
+
+----------------------------------------------------------------------------------------------------------------------------------------
+
+    For Linux
+
+    export AWS_DEFAULT_REGION=us-east-2
+
+----------------------------------------------------------------------------------------------------------------------------------------
+
+    For Windows CMD
+
+    setx AWS_DEFAULT_REGION us-east-2
+
+----------------------------------------------------------------------------------------------------------------------------------------
+
+    For PowerShell
+
+    $Env:AWS_DEFAULT_REGION="us-east-1"
+
+----------------------------------------------------------------------------------------------------------------------------------------
+
+Once the terraform configuration file "002-Create-Multiple-EC2-Instances-variabalized-names.tf" is created successfully.
+
+    To Run terraform configuration for the first time for this configuration file
+        1.  Navigate to the current directory (using terminal) where this configuration file is present
+        2.  Execute the following command.
+            terraform init
+
+----------------------------------------------------------------------------------------------------------------------------------------
+To create the resources in AWS by terraform, execute
+
+terraform apply -auto-approve
+
+----------------------------------------------------------------------------------------------------------------------------------------
+
+    This will apply the changes as mentioned in the terraform template and also create the following file
+    "terraform.tfstate" in the same directory
+
+----------------------------------------------------------------------------------------------------------------------------------------
+Output of "terraform apply -auto-approve"
+----------------------------------------------------------------------------------------------------------------------------------------
+
+	PS C:\Users\samarth\_code_repo\Infrastructure\Terraform\AWS\EC2\002-Create-Multiple-EC2-Instances-variabalized-names> terraform apply -auto-approve
+
+	Terraform used the selected providers to generate the following execution plan. Resource actions are indicated with the following symbols:
+	  + create
+
+	Terraform will perform the following actions:
+
+	  # aws_instance.my-ec2-instances[0] will be created
+	  + resource "aws_instance" "my-ec2-instances" {
+		  + ami                                  = "ami-006dcf34c09e50022"
+		  + arn                                  = (known after apply)    
+		  + associate_public_ip_address          = (known after apply)    
+		  + availability_zone                    = (known after apply)    
+		  + cpu_core_count                       = (known after apply)    
+		  + cpu_threads_per_core                 = (known after apply)    
+		  + disable_api_stop                     = (known after apply)    
+		  + disable_api_termination              = (known after apply)    
+		  + ebs_optimized                        = (known after apply)    
+		  + get_password_data                    = false
+		  + host_id                              = (known after apply)    
+		  + host_resource_group_arn              = (known after apply)    
+		  + iam_instance_profile                 = (known after apply)    
+		  + id                                   = (known after apply)    
+		  + instance_initiated_shutdown_behavior = (known after apply)    
+		  + instance_state                       = (known after apply)    
+		  + instance_type                        = "t2.micro"
+		  + ipv6_address_count                   = (known after apply)    
+		  + ipv6_addresses                       = (known after apply)
+		  + key_name                             = (known after apply)
+		  + monitoring                           = (known after apply)
+		  + outpost_arn                          = (known after apply)
+		  + password_data                        = (known after apply)
+		  + placement_group                      = (known after apply)
+		  + placement_partition_number           = (known after apply)
+		  + primary_network_interface_id         = (known after apply)
+		  + private_dns                          = (known after apply)
+		  + private_ip                           = (known after apply)
+		  + public_dns                           = (known after apply)
+		  + public_ip                            = (known after apply)
+		  + secondary_private_ips                = (known after apply)
+		  + security_groups                      = (known after apply)
+		  + source_dest_check                    = true
+		  + subnet_id                            = (known after apply)
+		  + tags                                 = {
+			  + "Name" = "my-ec2-instance-03022023-1"
+			}
+		  + tags_all                             = {
+			  + "Name" = "my-ec2-instance-03022023-1"
+			}
+		  + tenancy                              = (known after apply)
+		  + user_data                            = (known after apply)
+		  + user_data_base64                     = (known after apply)
+		  + user_data_replace_on_change          = false
+		  + vpc_security_group_ids               = (known after apply)
+
+		  + capacity_reservation_specification {
+			  + capacity_reservation_preference = (known after apply)
+
+			  + capacity_reservation_target {
+				  + capacity_reservation_id                 = (known after apply)
+				  + capacity_reservation_resource_group_arn = (known after apply)
+				}
+			}
+
+		  + ebs_block_device {
+			  + delete_on_termination = (known after apply)
+			  + device_name           = (known after apply)
+			  + encrypted             = (known after apply)
+			  + iops                  = (known after apply)
+			  + kms_key_id            = (known after apply)
+			  + snapshot_id           = (known after apply)
+			  + tags                  = (known after apply)
+			  + throughput            = (known after apply)
+			  + volume_id             = (known after apply)
+			  + volume_size           = (known after apply)
+			  + volume_type           = (known after apply)
+			}
+
+		  + enclave_options {
+			  + enabled = (known after apply)
+			}
+
+		  + ephemeral_block_device {
+			  + device_name  = (known after apply)
+			  + no_device    = (known after apply)
+			  + virtual_name = (known after apply)
+			}
+
+		  + maintenance_options {
+			  + auto_recovery = (known after apply)
+			}
+
+		  + metadata_options {
+			  + http_endpoint               = (known after apply)
+			  + http_put_response_hop_limit = (known after apply)
+			  + http_tokens                 = (known after apply)
+			  + instance_metadata_tags      = (known after apply)
+			}
+
+		  + network_interface {
+			  + delete_on_termination = (known after apply)
+			  + device_index          = (known after apply)
+			  + network_card_index    = (known after apply)
+			  + network_interface_id  = (known after apply)
+			}
+
+		  + private_dns_name_options {
+			  + enable_resource_name_dns_a_record    = (known after apply)
+			  + enable_resource_name_dns_aaaa_record = (known after apply)
+			  + hostname_type                        = (known after apply)
+			}
+
+		  + root_block_device {
+			  + delete_on_termination = (known after apply)
+			  + device_name           = (known after apply)
+			  + encrypted             = (known after apply)
+			  + iops                  = (known after apply)
+			  + kms_key_id            = (known after apply)
+			  + tags                  = (known after apply)
+			  + throughput            = (known after apply)
+			  + volume_id             = (known after apply)
+			  + volume_size           = (known after apply)
+			  + volume_type           = (known after apply)
+			}
+		}
+
+	  # aws_instance.my-ec2-instances[1] will be created
+	  + resource "aws_instance" "my-ec2-instances" {
+		  + ami                                  = "ami-006dcf34c09e50022"
+		  + arn                                  = (known after apply)
+		  + associate_public_ip_address          = (known after apply)
+		  + availability_zone                    = (known after apply)
+		  + cpu_core_count                       = (known after apply)
+		  + cpu_threads_per_core                 = (known after apply)
+		  + disable_api_stop                     = (known after apply)
+		  + disable_api_termination              = (known after apply)
+		  + ebs_optimized                        = (known after apply)
+		  + get_password_data                    = false
+		  + host_id                              = (known after apply)
+		  + host_resource_group_arn              = (known after apply)
+		  + iam_instance_profile                 = (known after apply)
+		  + id                                   = (known after apply)
+		  + instance_initiated_shutdown_behavior = (known after apply)
+		  + instance_state                       = (known after apply)
+		  + instance_type                        = "t2.micro"
+		  + ipv6_address_count                   = (known after apply)
+		  + ipv6_addresses                       = (known after apply)
+		  + key_name                             = (known after apply)
+		  + monitoring                           = (known after apply)
+		  + outpost_arn                          = (known after apply)
+		  + password_data                        = (known after apply)
+		  + placement_group                      = (known after apply)
+		  + placement_partition_number           = (known after apply)
+		  + primary_network_interface_id         = (known after apply)
+		  + private_dns                          = (known after apply)
+		  + private_ip                           = (known after apply)
+		  + public_dns                           = (known after apply)
+		  + public_ip                            = (known after apply)
+		  + secondary_private_ips                = (known after apply)
+		  + security_groups                      = (known after apply)
+		  + source_dest_check                    = true
+		  + subnet_id                            = (known after apply)
+		  + tags                                 = {
+			  + "Name" = "my-ec2-instance-03022023-2"
+			}
+		  + tags_all                             = {
+			  + "Name" = "my-ec2-instance-03022023-2"
+			}
+		  + tenancy                              = (known after apply)
+		  + user_data                            = (known after apply)
+		  + user_data_base64                     = (known after apply)
+		  + user_data_replace_on_change          = false
+		  + vpc_security_group_ids               = (known after apply)
+
+		  + capacity_reservation_specification {
+			  + capacity_reservation_preference = (known after apply)
+
+			  + capacity_reservation_target {
+				  + capacity_reservation_id                 = (known after apply)
+				  + capacity_reservation_resource_group_arn = (known after apply)
+				}
+			}
+
+		  + ebs_block_device {
+			  + delete_on_termination = (known after apply)
+			  + device_name           = (known after apply)
+			  + encrypted             = (known after apply)
+			  + iops                  = (known after apply)
+			  + kms_key_id            = (known after apply)
+			  + snapshot_id           = (known after apply)
+			  + tags                  = (known after apply)
+			  + throughput            = (known after apply)
+			  + volume_id             = (known after apply)
+			  + volume_size           = (known after apply)
+			  + volume_type           = (known after apply)
+			}
+
+		  + enclave_options {
+			  + enabled = (known after apply)
+			}
+
+		  + ephemeral_block_device {
+			  + device_name  = (known after apply)
+			  + no_device    = (known after apply)
+			  + virtual_name = (known after apply)
+			}
+
+		  + maintenance_options {
+			  + auto_recovery = (known after apply)
+			}
+
+		  + metadata_options {
+			  + http_endpoint               = (known after apply)
+			  + http_put_response_hop_limit = (known after apply)
+			  + http_tokens                 = (known after apply)
+			  + instance_metadata_tags      = (known after apply)
+			}
+
+		  + network_interface {
+			  + delete_on_termination = (known after apply)
+			  + device_index          = (known after apply)
+			  + network_card_index    = (known after apply)
+			  + network_interface_id  = (known after apply)
+			}
+
+		  + private_dns_name_options {
+			  + enable_resource_name_dns_a_record    = (known after apply)
+			  + enable_resource_name_dns_aaaa_record = (known after apply)
+			  + hostname_type                        = (known after apply)
+			}
+
+		  + root_block_device {
+			  + delete_on_termination = (known after apply)
+			  + device_name           = (known after apply)
+			  + encrypted             = (known after apply)
+			  + iops                  = (known after apply)
+			  + kms_key_id            = (known after apply)
+			  + tags                  = (known after apply)
+			  + throughput            = (known after apply)
+			  + volume_id             = (known after apply)
+			  + volume_size           = (known after apply)
+			  + volume_type           = (known after apply)
+			}
+		}
+
+	  # aws_instance.my-ec2-instances[2] will be created
+	  + resource "aws_instance" "my-ec2-instances" {
+		  + ami                                  = "ami-006dcf34c09e50022"
+		  + arn                                  = (known after apply)
+		  + associate_public_ip_address          = (known after apply)
+		  + availability_zone                    = (known after apply)
+		  + cpu_core_count                       = (known after apply)
+		  + cpu_threads_per_core                 = (known after apply)
+		  + disable_api_stop                     = (known after apply)
+		  + disable_api_termination              = (known after apply)
+		  + ebs_optimized                        = (known after apply)
+		  + get_password_data                    = false
+		  + host_id                              = (known after apply)
+		  + host_resource_group_arn              = (known after apply)
+		  + iam_instance_profile                 = (known after apply)
+		  + id                                   = (known after apply)
+		  + instance_initiated_shutdown_behavior = (known after apply)
+		  + instance_state                       = (known after apply)
+		  + instance_type                        = "t2.micro"
+		  + ipv6_address_count                   = (known after apply)
+		  + ipv6_addresses                       = (known after apply)
+		  + key_name                             = (known after apply)
+		  + monitoring                           = (known after apply)
+		  + outpost_arn                          = (known after apply)
+		  + password_data                        = (known after apply)
+		  + placement_group                      = (known after apply)
+		  + placement_partition_number           = (known after apply)
+		  + primary_network_interface_id         = (known after apply)
+		  + private_dns                          = (known after apply)
+		  + private_ip                           = (known after apply)
+		  + public_dns                           = (known after apply)
+		  + public_ip                            = (known after apply)
+		  + secondary_private_ips                = (known after apply)
+		  + security_groups                      = (known after apply)
+		  + source_dest_check                    = true
+		  + subnet_id                            = (known after apply)
+		  + tags                                 = {
+			  + "Name" = "my-ec2-instance-03022023-3"
+			}
+		  + tags_all                             = {
+			  + "Name" = "my-ec2-instance-03022023-3"
+			}
+		  + tenancy                              = (known after apply)
+		  + user_data                            = (known after apply)
+		  + user_data_base64                     = (known after apply)
+		  + user_data_replace_on_change          = false
+		  + vpc_security_group_ids               = (known after apply)
+
+		  + capacity_reservation_specification {
+			  + capacity_reservation_preference = (known after apply)
+
+			  + capacity_reservation_target {
+				  + capacity_reservation_id                 = (known after apply)
+				  + capacity_reservation_resource_group_arn = (known after apply)
+				}
+			}
+
+		  + ebs_block_device {
+			  + delete_on_termination = (known after apply)
+			  + device_name           = (known after apply)
+			  + encrypted             = (known after apply)
+			  + iops                  = (known after apply)
+			  + kms_key_id            = (known after apply)
+			  + snapshot_id           = (known after apply)
+			  + tags                  = (known after apply)
+			  + throughput            = (known after apply)
+			  + volume_id             = (known after apply)
+			  + volume_size           = (known after apply)
+			  + volume_type           = (known after apply)
+			}
+
+		  + enclave_options {
+			  + enabled = (known after apply)
+			}
+
+		  + ephemeral_block_device {
+			  + device_name  = (known after apply)
+			  + no_device    = (known after apply)
+			  + virtual_name = (known after apply)
+			}
+
+		  + maintenance_options {
+			  + auto_recovery = (known after apply)
+			}
+
+		  + metadata_options {
+			  + http_endpoint               = (known after apply)
+			  + http_put_response_hop_limit = (known after apply)
+			  + http_tokens                 = (known after apply)
+			  + instance_metadata_tags      = (known after apply)
+			}
+
+		  + network_interface {
+			  + delete_on_termination = (known after apply)
+			  + device_index          = (known after apply)
+			  + network_card_index    = (known after apply)
+			  + network_interface_id  = (known after apply)
+			}
+
+		  + private_dns_name_options {
+			  + enable_resource_name_dns_a_record    = (known after apply)
+			  + enable_resource_name_dns_aaaa_record = (known after apply)
+			  + hostname_type                        = (known after apply)
+			}
+
+		  + root_block_device {
+			  + delete_on_termination = (known after apply)
+			  + device_name           = (known after apply)
+			  + encrypted             = (known after apply)
+			  + iops                  = (known after apply)
+			  + kms_key_id            = (known after apply)
+			  + tags                  = (known after apply)
+			  + throughput            = (known after apply)
+			  + volume_id             = (known after apply)
+			  + volume_size           = (known after apply)
+			  + volume_type           = (known after apply)
+			}
+		}
+
+	Plan: 3 to add, 0 to change, 0 to destroy.
+	aws_instance.my-ec2-instances[2]: Creating...
+	aws_instance.my-ec2-instances[1]: Creating...
+	aws_instance.my-ec2-instances[0]: Creating...
+	aws_instance.my-ec2-instances[2]: Still creating... [10s elapsed]
+	aws_instance.my-ec2-instances[0]: Still creating... [10s elapsed]
+	aws_instance.my-ec2-instances[1]: Still creating... [10s elapsed]
+	aws_instance.my-ec2-instances[1]: Still creating... [20s elapsed]
+	aws_instance.my-ec2-instances[2]: Still creating... [20s elapsed]
+	aws_instance.my-ec2-instances[0]: Still creating... [20s elapsed]
+	aws_instance.my-ec2-instances[0]: Still creating... [30s elapsed]
+	aws_instance.my-ec2-instances[1]: Still creating... [30s elapsed]
+	aws_instance.my-ec2-instances[2]: Still creating... [30s elapsed]
+	aws_instance.my-ec2-instances[0]: Still creating... [40s elapsed]
+	aws_instance.my-ec2-instances[2]: Still creating... [40s elapsed]
+	aws_instance.my-ec2-instances[1]: Still creating... [40s elapsed]
+	aws_instance.my-ec2-instances[0]: Creation complete after 43s [id=i-03d47d34004daef60]
+	aws_instance.my-ec2-instances[1]: Creation complete after 43s [id=i-0345c5b48bbb9e049]
+	aws_instance.my-ec2-instances[2]: Creation complete after 43s [id=i-0c20e463086355df5]
+
+	Apply complete! Resources: 3 added, 0 changed, 0 destroyed.
+	PS C:\Users\samarth\_code_repo\Infrastructure\Terraform\AWS\EC2\002-Create-Multiple-EC2-Instances-variabalized-names> 
+	
+----------------------------------------------------------------------------------------------------------------------------------------
