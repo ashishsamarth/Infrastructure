@@ -19,8 +19,8 @@ provider "aws" {
 Now for example you have to create a resource - for e.g. S3 bucket
 Use, the following syntax
 
-For S3 - "my-terraform-bucket-with-versioning" is the resource name for the S3 bucket in terraform
-Actual name of the bucket will be - samarth-terraform-bucket-with-versioning
+For S3 - "my-terraform-bucket-with-variabalized-names" is the resource name for the S3 bucket in terraform
+Actual name of the bucket will be - samarth-my-terraform-bucket-1; samarth-my-terraform-bucket-2; samarth-my-terraform-bucket--3
 
 Note: This is a versioned and private bucket
 
